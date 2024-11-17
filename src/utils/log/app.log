@@ -1,1 +1,13 @@
 2024-11-16 15:20:04 | INFO | GET /
+2024-11-16 15:56:31 | ERROR | could not convert string to float: 'hola'
+2024-11-16 15:56:31 | ERROR | <function format_exc at 0x000002353A99A7A0>
+2024-11-16 18:09:21 | ERROR | 'sqlite3.Cursor' object does not support the context manager protocol
+2024-11-16 18:09:21 | ERROR | <function format_exc at 0x0000026870A96840>
+2024-11-16 18:10:17 | ERROR | 'sqlite3.Cursor' object does not support the context manager protocol
+2024-11-16 18:10:17 | ERROR | <function format_exc at 0x0000021438B96840>
+2024-11-16 18:16:36 | ERROR | Object of type Row is not JSON serializable
+2024-11-16 18:16:36 | ERROR | <function format_exc at 0x0000027B24B96840>
+2024-11-16 18:38:05 | ERROR | datatype mismatch
+2024-11-16 18:38:05 | ERROR | <function format_exc at 0x000001E030996840>
+2024-11-16 18:39:04 | ERROR | datatype mismatch
+2024-11-16 18:39:04 | ERROR | <function format_exc at 0x0000023716996840>
