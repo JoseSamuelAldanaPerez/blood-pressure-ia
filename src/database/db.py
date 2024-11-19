@@ -19,6 +19,7 @@ def init_db():
               id INTEGER PRIMARY KEY AUTOINCREMENT,
               systolic REAL NOT NULL,
               diastolic REAL NOT NULL,
+              anomaly INTEGER NOT NULL,
               created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
           );
         '''

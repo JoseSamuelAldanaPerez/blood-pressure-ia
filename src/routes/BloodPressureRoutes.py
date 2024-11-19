@@ -57,3 +57,11 @@ def blood_pressure():
                 "message": "Error al registrar la presión arterial",
                 "success": False,
             }), 500
+
+
+@main.route('/predict', methods=['GET'])
+def predict():
+    return jsonify({
+        "message": str(BloodPressureService.predict(120, 80)),
+        "success": True
+    })

@@ -1,6 +1,10 @@
 import traceback
+# from tensorflow.keras.models import load_model
+import numpy as np
 from src.database.db import get_db
 from src.utils.Logger import Logger
+
+# modelo = load_model('tensorflow/saved_model/')
 
 
 class BloodPressureService():
@@ -15,7 +19,8 @@ class BloodPressureService():
                 "id": row["id"],
                 "systolic": row["systolic"],
                 "diastolic": row["diastolic"],
-                "created_at": row["created_at"]
+                "created_at": row["created_at"],
+                "anomaly": 0
             }
         except Exception as ex:
             Logger.add_to_log("error", str(ex))
@@ -64,3 +69,9 @@ class BloodPressureService():
             Logger.add_to_log("error", traceback.format_exc)
         finally:
             connection.close()
+
+    @classmethod
+    def predict(cls, systolic, diastolic):
+        lecturas = np.array([systolic, diastolic])
+        # predicciones = modelo.predict(lecturas).tolist()
+        return lecturas
