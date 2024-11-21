@@ -5,6 +5,8 @@ from src.database.db import get_db
 from src.utils.Logger import Logger
 
 # modelo = load_model('tensorflow/saved_model/')
+# modelo = load_model('tensorflow/blood_pressure.h5')
+# modelo = load_model('tensorflow/blood_pressure.keras')
 
 
 class BloodPressureService():
@@ -74,4 +76,5 @@ class BloodPressureService():
     def predict(cls, systolic, diastolic):
         lecturas = np.array([systolic, diastolic])
         # predicciones = modelo.predict(lecturas).tolist()
+        # print(predicciones)
         return lecturas
