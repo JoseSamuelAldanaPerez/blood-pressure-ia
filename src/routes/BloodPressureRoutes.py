@@ -61,7 +61,34 @@ def blood_pressure():
 
 @main.route('/predict', methods=['GET'])
 def predict():
+    systolic = request.args.get('systolic')
+    diastolic = request.args.get('diastolic')
+
+    if systolic is None or diastolic is None:
+        return jsonify({
+            "message": "Los parametros 'systolic' y 'diastolic' son obligatoros",
+            "success": False,
+        }), 400
+
+    try:
+        systolic = float(systolic)
+        diastolic = float(diastolic)
+    except ValueError as ex:
+        Logger.add_to_log("error", str(ex))
+        Logger.add_to_log("error", traceback.format_exc)
+        return jsonify({
+            "message": "Los parametros 'systolic' y 'diastolic' deben ser números",
+            "success": False,
+            "error": str(ex)
+        }), 400
+
+    prediccion = str(BloodPressureService.predict(systolic, diastolic))
     return jsonify({
-        "message": str(BloodPressureService.predict(120, 80)),
+        "message": "Predicción realizada con éxito",
+        "data": {
+            "systolic": systolic,
+            "diastolic": diastolic,
+            "prediction": prediccion
+        },
         "success": True
     })

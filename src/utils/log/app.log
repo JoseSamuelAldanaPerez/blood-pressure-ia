@@ -11,3 +11,7 @@
 2024-11-16 18:38:05 | ERROR | <function format_exc at 0x000001E030996840>
 2024-11-16 18:39:04 | ERROR | datatype mismatch
 2024-11-16 18:39:04 | ERROR | <function format_exc at 0x0000023716996840>
+2024-11-20 21:54:21 | ERROR | could not convert string to float: '81a'
+2024-11-20 21:54:21 | ERROR | <function format_exc at 0x000001480FEC0EA0>
+2024-11-20 21:56:23 | ERROR | could not convert string to float: '81asdf'
+2024-11-20 21:56:23 | ERROR | <function format_exc at 0x0000016194CF0EA0>
