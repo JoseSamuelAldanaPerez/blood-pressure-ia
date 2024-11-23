@@ -24,7 +24,7 @@ class BloodPressureService():
                 "systolic": row["systolic"],
                 "diastolic": row["diastolic"],
                 "created_at": row["created_at"],
-                "anomaly": 0
+                "anomaly": row["anomaly"]
             }
         except Exception as ex:
             Logger.add_to_log("error", str(ex))
@@ -46,7 +46,8 @@ class BloodPressureService():
                     "id": row["id"],
                     "systolic": row["systolic"],
                     "diastolic": row["diastolic"],
-                    "created_at": row["created_at"]
+                    "created_at": row["created_at"],
+                    "anomaly": row["anomaly"]
                 })
             return rows
         except Exception as ex:
@@ -56,15 +57,15 @@ class BloodPressureService():
             connection.close()
 
     @classmethod
-    def create(cls, systolic, diastolic):
+    def create(cls, systolic, diastolic, anomaly):
         id = 0
         try:
             connection = get_db()
             cursor = connection.cursor()
             cursor.execute('''
-                    INSERT INTO blood_pressure (systolic, diastolic)
-                    VALUES (?, ?)
-                ''', (systolic, diastolic))
+                    INSERT INTO blood_pressure (systolic, diastolic, anomaly)
+                    VALUES (?, ?, ?)
+                ''', (systolic, diastolic, anomaly))
             connection.commit()
             id = cursor.lastrowid
             return cls.get_by_id(id)

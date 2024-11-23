@@ -45,7 +45,7 @@ def blood_pressure():
                 "error": str(ex)
             }), 400
 
-        data = BloodPressureService.create(systolic, diastolic)
+        data = BloodPressureService.create(systolic, diastolic, 0)
         if (data is not None):
             return jsonify({
                 "message": "Presión arterial registrada",
