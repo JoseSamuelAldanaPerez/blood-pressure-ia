@@ -1,5 +1,5 @@
 import traceback
-# from tensorflow.keras.models import load_model
+from tensorflow.keras.models import load_model
 import numpy as np
 import joblib
 from src.database.db import get_db
@@ -7,7 +7,7 @@ from src.utils.Logger import Logger
 
 # modelo = load_model('tensorflow/saved_model/')
 # modelo = load_model('tensorflow/blood_pressure.h5')
-# modelo = load_model('tensorflow/blood_pressure.keras')
+modelo = load_model('tensorflow/blood_pressure.keras')
 scaler = joblib.load('tensorflow/scaler.pkl')
 
 
@@ -79,7 +79,7 @@ class BloodPressureService():
     def predict(cls, systolic, diastolic):
         lecturas = np.array([[systolic, diastolic]])
         lecturas_escaladas = scaler.transform(lecturas)
-        # prediccion = modelo.predict(lecturas_escaladas).tolist()
+        prediccion = modelo.predict(lecturas_escaladas).tolist()
         # print(predicciones)
-        # return pediccion[0][0]
-        return lecturas_escaladas
+        return prediccion[0][0]
+        # return lecturas_escaladas
